@@ -11,7 +11,7 @@ A Simple package that help you send a firebase notification with your laravel ap
 You can pull the package via composer :
 
 ``` bash
-$ composer require kawankoding/laravel-fcm
+$ composer require eskater/laravel-fcm
 ```
 
  Next, You must register the service provider :
@@ -21,7 +21,7 @@ $ composer require kawankoding/laravel-fcm
 
 'Providers' => [
     ...
-    Kawankoding\Fcm\FcmServiceProvider::class,
+    Eskater\Fcm\FcmServiceProvider::class,
 ]
  ```
 
@@ -31,14 +31,14 @@ $ composer require kawankoding/laravel-fcm
 // config/app.php
 'aliases' => [
     ...
-    'Fcm' => Kawankoding\Fcm\FcmFacade::class,
+    'Fcm' => Eskater\Fcm\FcmFacade::class,
 ];
 ```
 
 Next, You must publish the config file to define your fcm server key :
 
 ```bash
-php artisan vendor:publish --provider="Kawankoding\Fcm\FcmServiceProvider"
+php artisan vendor:publish --provider="Eskater\Fcm\FcmServiceProvider"
 ```
 
 This is the contents of the published file:
@@ -99,6 +99,7 @@ fcm()
         'title' => 'Test FCM',
         'body' => 'This is a test of FCM',
     ])
+    ->useKey($serverKey) // $serverKey using another key
     ->notification([
         'title' => 'Test FCM',
         'body' => 'This is a test of FCM',

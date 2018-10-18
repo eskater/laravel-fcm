@@ -1,6 +1,6 @@
 <?php
 
-namespace Kawankoding\Fcm;
+namespace Eskater\Fcm;
 
 /**
  * Class Fcm

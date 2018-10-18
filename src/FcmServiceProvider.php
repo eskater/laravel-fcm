@@ -1,9 +1,9 @@
 <?php
 
-namespace Kawankoding\Fcm;
+namespace Eskater\Fcm;
 
 use Illuminate\Support\ServiceProvider;
-use Kawankoding\Fcm\Fcm;
+use Eskater\Fcm\Fcm;
 
 /**
  * Class FcmServiceProvider

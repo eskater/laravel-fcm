@@ -12,6 +12,12 @@ class Fcm
     protected $topic;
     protected $data;
     protected $notification;
+    protected $serverKey;
+
+    public function __construct()
+    {
+        $this->serverKey = config('laravel-fcm.server_key');
+    }
 
     public function to(array $recipient)
     {
@@ -41,6 +47,13 @@ class Fcm
         return $this;
     }
 
+    public function useKey($serverKey)
+    {
+        $this->serverKey = $serverKey;
+
+        return $this;
+    }
+
     public function send()
     {
         $fcmEndpoint = 'https://fcm.googleapis.com/fcm/send';
@@ -58,10 +71,8 @@ class Fcm
             $fields['registration_ids'] = $this->recipient;
         }
 
-        $serverKey = config('laravel-fcm.server_key');
-
         $headers = [
-            'Authorization:key=' . $serverKey,
+            'Authorization:key=' . $this->serverKey,
             'Content-Type:application/json'
         ];
 
